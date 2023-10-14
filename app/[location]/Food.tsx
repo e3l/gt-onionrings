@@ -14,9 +14,7 @@ export default function Food(props: {
                 {name}
             </h3>
             <div className="flex gap-2 mb-3 text-slate-500 font-bold items-center">
-                <p className="">
-                    <Stars num={stars} />
-                </p>
+                <Stars num={stars} />
                 <p>•</p>
                 <p className="">
                     {ratings} {ratings == 1 ? "rating" : "ratings"}

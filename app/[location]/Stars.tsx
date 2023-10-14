@@ -1,4 +1,4 @@
-import { BsHexagonFill, BsHexagonHalf, BsHexagon } from 'react-icons/bs';
+import { BsHexagonFill, BsHexagonHalf, BsHexagon } from "react-icons/bs";
 
 
 export default function Stars(props: {
