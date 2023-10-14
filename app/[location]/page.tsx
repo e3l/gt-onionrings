@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
+import { BsArrowLeft } from "react-icons/bs";
 import { DEFAULT_LOCATION, FoodType, LOCATIONS, LocationType, StationType } from "@/util/types";
 import StationsSidebar from "./StationsSidebar";
 import FoodsList from "./FoodsList";
@@ -7,6 +8,7 @@ import ViewModeSidebar from "./ViewModeSidebar";
 
 
 export default function Page({ params }: { params: { location: string } }) {
+    const [loading, setLoading] = useState(true);
     const [locationObj, setLocationObj] = useState<LocationType>(DEFAULT_LOCATION);
     const [stations, setStations] = useState<StationType[]>([]);
     const [foods, setFoods] = useState<FoodType[]>([]);
@@ -30,6 +32,7 @@ export default function Page({ params }: { params: { location: string } }) {
             .then(data => {
                 setStations(data.stations);
             })
+        setLoading(false);
     }, []);
 
     useEffect(() => {
@@ -49,7 +52,16 @@ export default function Page({ params }: { params: { location: string } }) {
                 <h1 className="text-5xl font-bold mb-6">
                     {locationObj.name}
                 </h1>
-                <FoodsList foods={foods} tileView={tileView} />
+                <a
+                    href={"/"}
+                    className="flex gap-2 items-center text-lg font-bold px-3 py-2 mb-6 bg-slate-200 hover:bg-slate-300 transition duration-150 rounded-lg"
+                >
+                    <BsArrowLeft size={24} />
+                    Back to all locations
+                </a>
+                {loading ? <p className="italic">
+                    loading...
+                </p> : <FoodsList foods={foods} tileView={tileView} />}
             </div>
             <ViewModeSidebar tileView={tileView} setTileView={setTileView} />
         </div>

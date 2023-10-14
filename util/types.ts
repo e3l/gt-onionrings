@@ -17,7 +17,7 @@ export type LocationType = {
 }
 
 export const DEFAULT_LOCATION: LocationType = {
-    name: "",
+    name: "loading...",
     slug: "",
     nutrisliceSlug: "",
     image: "",

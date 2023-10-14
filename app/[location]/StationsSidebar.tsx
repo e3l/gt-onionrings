@@ -33,7 +33,7 @@ export default function StationsSidebar(props: {
                     Toggle all
                 </button>
                 <div className="flex flex-col">
-                    {stations.map((s, i) =>
+                    {stations.length > 0 ? stations.map((s, i) =>
                         <Checkbox
                             key={i}
                             label={s.name}
@@ -43,7 +43,9 @@ export default function StationsSidebar(props: {
                                 setStations([...stations]);
                             }}
                         />
-                    )}
+                    ) : <p className="italic">
+                        No stations.
+                    </p>}
                 </div>
             </div>
         </div>
