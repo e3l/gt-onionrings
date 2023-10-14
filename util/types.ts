@@ -16,6 +16,13 @@ export type LocationType = {
     image: string,
 }
 
+export const DEFAULT_LOCATION: LocationType = {
+    name: "",
+    slug: "",
+    nutrisliceSlug: "",
+    image: "",
+}
+
 export const LOCATIONS: LocationType[] = [
     {
         name: "Willage",
