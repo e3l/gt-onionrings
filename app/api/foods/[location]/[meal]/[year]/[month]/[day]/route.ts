@@ -33,6 +33,7 @@ export async function GET(_: Request, { params }: { params: {
         if ("food" in x && x.food !== null && "name" in x.food) {
             currStation.foods.push({
                 name: x.food.name,
+                station: currStation.name,
             })
         }
     });

@@ -1,5 +1,6 @@
 export type FoodType = {
     name: string,
+    station: string,
 }
 
 export type StationType = {
