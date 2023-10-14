@@ -7,6 +7,11 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    extend: {
+      gridAutoColumns: {
+        '2fr': 'minmax(0, 2fr)',
+      }
+    },
     container: {
       center: true,
     },
