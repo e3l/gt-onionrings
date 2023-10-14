@@ -32,7 +32,7 @@ export default function StationsSidebar(props: {
                 >
                     Toggle all
                 </button>
-                <div className="flex flex-col">
+                <div className="flex flex-col whitespace-nowrap">
                     {stations.map((s, i) =>
                         <Checkbox
                             key={i}

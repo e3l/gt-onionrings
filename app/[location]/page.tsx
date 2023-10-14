@@ -1,25 +1,28 @@
 'use client'
 import { useEffect, useState } from "react";
-import { FoodType, StationType } from "@/util/types";
+import { FoodType, LOCATIONS, StationType } from "@/util/types";
 import StationsSidebar from "./StationsSidebar";
 import FoodsList from "./FoodsList";
 import ViewModeSidebar from "./ViewModeSidebar";
 
 
 export default function Page({ params }: { params: { location: string } }) {
+    const { location } = params;
+
     const [stations, setStations] = useState<StationType[]>([]);
     const [foods, setFoods] = useState<FoodType[]>([]);
     const [tileView, setTileView] = useState(false);
 
     useEffect(() => {
-        const { location, meal, year, month, day } = {
-            location: "west-village",
-            meal: "lunch",
-            year: "2023",
-            month: "10",
-            day: "14",
-        }
-        fetch(`http://localhost:3000/api/foods/${location}/${meal}/${year}/${month}/${day}`, { cache: "no-store" })
+        const locationObj = LOCATIONS.find(l => l.slug === location);
+
+        const loc = locationObj?.nutrisliceSlug;
+        const meal = "lunch";
+        const year = new Date().getFullYear();
+        const month = new Date().getMonth();
+        const day = new Date().getDate();
+
+        fetch(`http://localhost:3000/api/foods/${loc}/${meal}/${year}/${month}/${day}`, { cache: "no-store" })
             .then(res => res.json())
             .then(data => {
                 setStations(data.stations);
