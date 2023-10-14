@@ -1,4 +1,5 @@
-import { FoodType } from "@/util/types";
+import { StationType } from "@/util/types";
+
 
 export async function GET(_: Request, { params }: { params: {
     location: string,
@@ -9,18 +10,35 @@ export async function GET(_: Request, { params }: { params: {
 } }) {
     const { location, meal, year, month, day } = params;
     const res = await fetch(`https://techdining.api.nutrislice.com/menu/api/weeks/school/${location}/menu-type/${meal}/${year}/${month}/${day}/`, { cache: "no-store" });
-    const data = await res.json()
-    console.log(data)
+    const data = await res.json();
 
-    const foods: FoodType[] = []
+    const stations: StationType[] = [];
+    let currStation: StationType = {
+        name: "",
+        checked: true,
+        foods: [],
+    }
     data.days[new Date().getDay()].menu_items.forEach((x: any) => {
-        console.log(x)
+        if (x.text !== "") {
+            if (currStation.name) {
+                stations.push(currStation);
+                currStation = {
+                    name: "",
+                    checked: true,
+                    foods: [],
+                }
+            }
+            currStation.name = x.text;
+        }
         if ("food" in x && x.food !== null && "name" in x.food) {
-            foods.push({
+            currStation.foods.push({
                 name: x.food.name,
             })
         }
     });
+    if (currStation.name) {
+        stations.push(currStation);
+    }
 
-    return Response.json({ foods })
+    return Response.json({ stations })
 }
