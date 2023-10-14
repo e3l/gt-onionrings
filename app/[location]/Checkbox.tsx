@@ -6,9 +6,9 @@ export default function Checkbox(props: {
     const { label, on, setOn } = props;
 
     return (
-        <button className="flex gap-2 items-center w-full bg-slate-200/0 hover:bg-slate-200 transition duration-150" onClick={() => setOn(!on)}>
+        <button className="py-0.5 text-sm font-semibold flex gap-2 items-center w-full bg-slate-200/0 hover:bg-slate-200 transition duration-150" onClick={() => setOn(!on)}>
             <div className={"border-2 border-white ring-2 ring-slate-500 w-4 h-4 transition duration-150 "
-                    + (on ? "bg-green-400" : "bg-white")} />
+                    + (on ? "bg-emerald-300" : "bg-white")} />
             {label}
         </button>
     )

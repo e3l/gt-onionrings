@@ -20,7 +20,7 @@ export default function Food(props: {
             <div className="flex gap-2 text-slate-500 font-bold items-center">
                 <Stars num={stars} />
                 <p>•</p>
-                <p className="">
+                <p className="text-sm">
                     {ratings} {ratings == 1 ? "rating" : "ratings"}
                 </p>
             </div>
