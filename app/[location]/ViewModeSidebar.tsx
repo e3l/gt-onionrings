@@ -8,7 +8,7 @@ export default function ViewModeSidebar(props: {
     const { tileView, setTileView } = props;
 
     return (
-        <div className="flex flex-col bg-slate-200 mt-36 w-min whitespace-nowrap rounded-lg">
+        <div className="flex flex-col bg-slate-200 mt-36 w-full whitespace-nowrap rounded-lg">
             <button
                 onClick={() => setTileView(false)}
                 className={"flex gap-1 items-center p-1 pr-2 rounded-lg transition duration-150 "

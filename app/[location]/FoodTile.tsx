@@ -1,13 +1,11 @@
+import { FoodType } from "@/util/types"
 import Stars from "./Stars"
 
 
 export default function Food(props: {
-    name: string,
-    station: string,
-    stars: number,
-    ratings: number
+    food: FoodType,
 }) {
-    const { name, station, stars, ratings } = props
+    const { name, station, stars, ratings } = props.food;
 
     return (
         <div className="break-inside-avoid-column flex flex-col bg-slate-200 w-72 rounded-lg px-3 py-2">

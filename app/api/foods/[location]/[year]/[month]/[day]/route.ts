@@ -51,6 +51,8 @@ export async function GET(_: Request, { params }: { params: {
                 currStation.foods.push({
                     name: x.food.name,
                     station: currStation.name,
+                    stars: Math.random() * 5,
+                    ratings: Math.floor(Math.random() * 100),
                 })
             }
         });

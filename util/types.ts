@@ -1,6 +1,8 @@
 export type FoodType = {
     name: string,
     station: string,
+    stars: number,
+    ratings: number,
 }
 
 export type StationType = {

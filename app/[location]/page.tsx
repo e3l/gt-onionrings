@@ -6,6 +6,7 @@ import StationsSidebar from "./StationsSidebar";
 import FoodsList from "./FoodsList";
 import ViewModeSidebar from "./ViewModeSidebar";
 import ChooseMealSidebar from "./ChooseMealSidebar";
+import SortOption from "./SortOption";
 
 
 export default function Page({ params }: { params: { location: string } }) {
@@ -16,6 +17,7 @@ export default function Page({ params }: { params: { location: string } }) {
     const [foods, setFoods] = useState<FoodType[]>([]);
     const [tileView, setTileView] = useState(false);
     const [chosenMeal, setChosenMeal] = useState("Breakfast");
+    const [sortMode, setSortMode] = useState("Highest rated");
 
     useEffect(() => {
         const loc = LOCATIONS.find(l => l.slug === params.location);
@@ -111,11 +113,12 @@ export default function Page({ params }: { params: { location: string } }) {
                 </a>
                 {loading ? <p className="italic">
                     loading...
-                </p> : <FoodsList foods={foods} tileView={tileView} />}
+                </p> : <FoodsList foods={foods} tileView={tileView} sortMode={sortMode} />}
             </div>
             <div className="absolute right-4 top-0 sticky h-screen text-slate-500">
                 <ViewModeSidebar tileView={tileView} setTileView={setTileView} />
                 <ChooseMealSidebar chosenMeal={chosenMeal} setChosenMeal={setChosenMeal} />
+                <SortOption mode={sortMode} setMode={setSortMode} />
             </div>
         </div>
     )
