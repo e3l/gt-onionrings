@@ -64,9 +64,8 @@ export default function Page({ params }: { params: { location: string } }) {
                     }
                 });
                 setFoods(foodsArr);
+                setLoading(false);
             });
-
-        setLoading(false);
     }, []);
 
     useEffect(() => {
