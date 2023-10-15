@@ -9,6 +9,18 @@ export type StationType = {
     foods: FoodType[],
 }
 
+export type AllFoodsType = {
+    breakfast: StationType[],
+    lunch: StationType[],
+    dinner: StationType[],
+}
+
+export const DEFAULT_ALL_FOODS: AllFoodsType = {
+    breakfast: [],
+    lunch: [],
+    dinner: [],
+}
+
 export type LocationType = {
     name: string,
     slug: string,
